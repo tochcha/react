@@ -11,12 +11,12 @@ import Music from './components/Music/Music';
 import Setting from './components/Setting/Setting';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Friends from './components/Friends/Friends';
+import store from './redux/state';
 
 
 
 
-function App(props) {
-	console.log(props.state);
+function App() {
 	return <>
 		<BrowserRouter>
 			<div className="main_wrapper">
@@ -26,8 +26,8 @@ function App(props) {
 						<div className="wrapper">
 							<div className='content__grid'>
 								<aside className='aside'>
-									<Nav menu={props.state.menu} />
-									<Friends friends={props.state.friends} />
+									<Nav menu={store.state.menu} />
+									<Friends friends={store.state.friends} />
 								</aside>
 								<main className='main'>
 									<Routes>
@@ -35,17 +35,17 @@ function App(props) {
 										<Route
 											path="/dialogs/*"
 											element={<Dialogs
-												dialogsUsers={props.state.dialogsPage.dialogsUsers}
-												messagesData={props.state.dialogsPage.messagesData}
+												dialogsUsers={store.state.dialogsPage.dialogsUsers}
+												messagesData={store.state.dialogsPage.messagesData}
 											/>}
 										/>
 										<Route
 											path="/profile"
 											element={<Profile
-												myProfile={props.state.myProfilePage.myProfile} dataMyPosts={props.state.myProfilePage.dataMyPosts}
-												newPostText={props.state.myProfilePage.newPostText}
-												updatePostValue={props.updatePostValue}
-												addPost={props.addPost}
+												myProfile={store.state.myProfilePage.myProfile} dataMyPosts={store.state.myProfilePage.dataMyPosts}
+												newPostText={store.state.myProfilePage.newPostText}
+												updatePostValue={store.updatePostValue}
+												addPost={store.addPost}
 											/>}
 										/>
 										<Route path="/news" element={<News />} />

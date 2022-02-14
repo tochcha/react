@@ -90,18 +90,19 @@ let store = {
 	addPost: function() {
 		let newPost = {
 			id: 3,
-			message: state.myProfilePage.newPostText,
+			message: store.state.myProfilePage.newPostText,
 			likes: 0
 		};
-		if (state.myProfilePage.newPostText.length > 0) {
-			state.myProfilePage.dataMyPosts.push(newPost);
+		if (store.state.myProfilePage.newPostText.length > 0) {
+			store.state.myProfilePage.dataMyPosts.push(newPost);
 		}
-		updatePostValue('');
-		rerender(state);
+		store.updatePostValue('');
+		rerender(store.state);
 	},
 	updatePostValue: function(newText) {
-		state.myProfilePage.newPostText = newText;
-		rerender(state);
+		store.state.myProfilePage.newPostText = newText;
+		console.log(store.state.myProfilePage.newPostText);
+		rerender(store.state);
 	},
 	subscribe: function(observer) {
 		rerender = observer;

@@ -10,7 +10,6 @@ function DialogContent(props) {
 	let newMessage = React.createRef();
 	function addMessage() {
 		let text = newMessage.current.value;
-		console.log(text);
 	}
 
 	return <>
