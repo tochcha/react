@@ -215,4 +215,4 @@ export const subscribe = (observer) => {
 	rerender = observer;
 }
 
-export default store;
+export default state;
