@@ -10,7 +10,7 @@ function Profile(props) {
 		</div>
 		<div className="main__content">
 			<ProfileMain myProfile={props.myProfile} />
-			<MyPosts title='My posts store!' dataMyPosts={props.dataMyPosts} addPost={props.addPost} newPostText={props.newPostText} updatePostValue={props.updatePostValue} />
+			<MyPosts title='My posts store!' dataMyPosts={props.dataMyPosts} addPost={props.addPost} newPostText={props.newPostText} updatePostText={props.updatePostText} />
 		</div>
 	</div>
 }

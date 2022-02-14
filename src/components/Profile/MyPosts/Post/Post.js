@@ -6,7 +6,7 @@ function Post({message, likes}) {
 		<div className={s.item}>
 			<div className={s.icon}></div>
 			<div className={s.message}>
-				<p className={`${s.italic}`}>{message} <span className={s.likes}>({likes})</span></p>
+				<p className={s.italic}>{message} <span className={s.likes}>({likes})</span></p>
 			</div>
 		</div>
 	</>

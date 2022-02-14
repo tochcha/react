@@ -1,9 +1,5 @@
-let rerender = () => {
-	console.log('State changed');;
-}
-
 let store = {
-	state: {
+	_state: {
 		dialogsPage: {
 			dialogsUsers: [
 				{ id: 1, name: 'Teagirl', ava: 'https://author.today/content/2021/03/25/8488dde4a706465f96bf00ec457e4ec3.png' },
@@ -87,25 +83,31 @@ let store = {
 			},
 		]
 	},
-	addPost: function() {
+	getState() {
+		return this._state;
+	},
+	_callSubscriber() {
+		console.log('State changed');;
+	},
+	addPost() {
 		let newPost = {
 			id: 3,
-			message: store.state.myProfilePage.newPostText,
+			message: store._state.myProfilePage.newPostText,
 			likes: 0
 		};
-		if (store.state.myProfilePage.newPostText.length > 0) {
-			store.state.myProfilePage.dataMyPosts.push(newPost);
+		if (store._state.myProfilePage.newPostText.length > 0) {
+			store._state.myProfilePage.dataMyPosts.push(newPost);
 		}
-		store.updatePostValue('');
-		rerender(store.state);
+		this.updatePostText('');
+		store._callSubscriber(this._state);
 	},
-	updatePostValue: function(newText) {
-		store.state.myProfilePage.newPostText = newText;
-		console.log(store.state.myProfilePage.newPostText);
-		rerender(store.state);
+	updatePostText(newText) {
+		store._state.myProfilePage.newPostText = newText;
+		console.log(store._state.myProfilePage.newPostText);
+		store._callSubscriber(this._state);
 	},
-	subscribe: function(observer) {
-		rerender = observer;
+	subscribe(observer) {
+		store._callSubscriber = observer;
 	}
 };
 

@@ -26,8 +26,8 @@ function App() {
 						<div className="wrapper">
 							<div className='content__grid'>
 								<aside className='aside'>
-									<Nav menu={store.state.menu} />
-									<Friends friends={store.state.friends} />
+									<Nav menu={store._state.menu} />
+									<Friends friends={store._state.friends} />
 								</aside>
 								<main className='main'>
 									<Routes>
@@ -35,16 +35,16 @@ function App() {
 										<Route
 											path="/dialogs/*"
 											element={<Dialogs
-												dialogsUsers={store.state.dialogsPage.dialogsUsers}
-												messagesData={store.state.dialogsPage.messagesData}
+												dialogsUsers={store._state.dialogsPage.dialogsUsers}
+												messagesData={store._state.dialogsPage.messagesData}
 											/>}
 										/>
 										<Route
 											path="/profile"
 											element={<Profile
-												myProfile={store.state.myProfilePage.myProfile} dataMyPosts={store.state.myProfilePage.dataMyPosts}
-												newPostText={store.state.myProfilePage.newPostText}
-												updatePostValue={store.updatePostValue}
+												myProfile={store._state.myProfilePage.myProfile} dataMyPosts={store._state.myProfilePage.dataMyPosts}
+												newPostText={store._state.myProfilePage.newPostText}
+												updatePostText={store.updatePostText}
 												addPost={store.addPost}
 											/>}
 										/>
