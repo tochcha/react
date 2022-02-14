@@ -1,0 +1,20 @@
+.menu {
+	padding: 0 0 30px;
+}
+.item {
+	font-size: 18px;
+	list-style: none;
+	padding-bottom: 5px;
+}
+.item a {
+	letter-spacing: 1px;
+	text-decoration: none;
+}
+.last {
+	padding-top: 5px;
+	border-top: 1px dotted #ccc;
+	margin-top: 5px;
+}
+[aria-current=page] {
+	color: #FF5900;
+}

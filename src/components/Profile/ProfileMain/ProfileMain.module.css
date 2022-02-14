@@ -1,0 +1,10 @@
+.main {
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	gap: 30px;
+	padding-bottom: 30px;
+
+}
+.ava img {
+	width: 100%;
+}

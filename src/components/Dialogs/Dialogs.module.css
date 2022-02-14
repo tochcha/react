@@ -1,0 +1,18 @@
+.dialogs {
+	padding-bottom: 30px;
+}
+.row {
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	gap: 20px;
+}
+.items {
+	padding: 0 15px 0 0;
+	border-right: 1px solid #ccc;
+}
+.content {
+	padding-bottom: 20px;
+}
+.dialogsItems {
+	position: relative;
+}
