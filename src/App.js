@@ -16,7 +16,6 @@ import Friends from './components/Friends/Friends';
 
 
 function App(props) {
-	console.log(props.state);
 	return <>
 		<BrowserRouter>
 			<div className="main_wrapper">
