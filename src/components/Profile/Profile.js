@@ -3,14 +3,20 @@ import s from './Profile.module.css';
 import ProfileMain from './ProfileMain/ProfileMain';
 import MyPosts from './MyPosts/MyPosts';
 
-function Profile(props) {
+function Profile({ myProfile, dataMyPosts, newPostText, updatePostText, addPost }) {
 	return <div className='profile'>
 		<div className={s.banner}>
-			<img src={props.myProfile.banner} alt="" />
+			<img src={myProfile.banner} alt="" />
 		</div>
 		<div className="main__content">
-			<ProfileMain myProfile={props.myProfile} />
-			<MyPosts title='My posts' dataMyPosts={props.dataMyPosts} addPost={props.addPost} newPostText={props.newPostText} updatePostValue={props.updatePostValue} />
+			<ProfileMain myProfile={myProfile} />
+			<MyPosts
+				title='My posts store!'
+				dataMyPosts={dataMyPosts}
+				addPost={addPost}
+				newPostText={newPostText}
+				updatePostText={updatePostText}
+			/>
 		</div>
 	</div>
 }

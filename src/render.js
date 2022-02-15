@@ -2,7 +2,7 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { addPost, updatePostValue } from './redux/state'
+import { addPost, updatePostText } from './redux/state'
 
 
 export function myRender(state) {
@@ -11,7 +11,7 @@ export function myRender(state) {
 			<App
 				state={state}
 				addPost = {addPost}
-				updatePostValue = {updatePostValue}
+				updatePostText = {updatePostText}
 			/>
 		</React.StrictMode>,
 		document.getElementById('root')

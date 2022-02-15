@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './components/Forms/Forms.css';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
@@ -9,13 +10,14 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setting from './components/Setting/Setting';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Friends from './components/Friends/Friends';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import store from './redux/state';
 
 
 
 
-function App(props) {
+function App() {
 	return <>
 		<BrowserRouter>
 			<div className="main_wrapper">
@@ -25,8 +27,8 @@ function App(props) {
 						<div className="wrapper">
 							<div className='content__grid'>
 								<aside className='aside'>
-									<Nav menu={props.state.menu} />
-									<Friends friends={props.state.friends} />
+									<Nav menu={store.getState().menu} />
+									<Friends friends={store.getState().friends} />
 								</aside>
 								<main className='main'>
 									<Routes>
@@ -34,17 +36,17 @@ function App(props) {
 										<Route
 											path="/dialogs/*"
 											element={<Dialogs
-												dialogsUsers={props.state.dialogsPage.dialogsUsers}
-												messagesData={props.state.dialogsPage.messagesData}
+												dialogsUsers={store.getState().dialogsPage.dialogsUsers}
+												messagesData={store.getState().dialogsPage.messagesData}
 											/>}
 										/>
 										<Route
 											path="/profile"
 											element={<Profile
-												myProfile={props.state.myProfilePage.myProfile} dataMyPosts={props.state.myProfilePage.dataMyPosts}
-												newPostText={props.state.myProfilePage.newPostText}
-												updatePostValue={props.updatePostValue}
-												addPost={props.addPost}
+												myProfile={store.getState().myProfilePage.myProfile} dataMyPosts={store.getState().myProfilePage.dataMyPosts}
+												newPostText={store.getState().myProfilePage.newPostText}
+												updatePostText={store.updatePostText.bind(store)}
+												addPost={store.addPost.bind(store)}
 											/>}
 										/>
 										<Route path="/news" element={<News />} />

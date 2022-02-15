@@ -16,8 +16,12 @@
 	height: 22px;
 	border-radius: 50%;
 }
+.italic {
+	font-style: italic;
+}
 .likes {
 	font-weight: bold;
 	color: #999;
 	font-size: 70%;
+	font-style: normal;
 }
