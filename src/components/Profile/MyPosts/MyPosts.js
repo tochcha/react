@@ -1,5 +1,4 @@
 import React from 'react';
-import './../../Forms/Forms.css';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
@@ -10,7 +9,7 @@ function MyPosts(props) {
 	const resDataMyPosts = props.dataMyPosts.map((myPost, index) => {
 		return <Post key={index} message={myPost.message} likes={myPost.likes} />
 	});
-	let newPostElement = React.createRef();
+	let newPostTextarea = React.createRef();
 	
 	function addPostHandler() {
 		let text = props.newPostText;
@@ -18,7 +17,7 @@ function MyPosts(props) {
 	}
 
 	function onPostChange() {
-		let text = newPostElement.current.value;
+		let text = newPostTextarea.current.value;
 		props.updatePostText(text);
 	}
 
@@ -27,7 +26,7 @@ function MyPosts(props) {
 		<div className="posts">
 			<h2>{props.title}</h2>
 			<div className={s.add}>
-				<textarea value={props.newPostText} ref={newPostElement} onChange={onPostChange} className={`${s.inpText} inpText`} placeholder='your posts...' />
+				<textarea value={props.newPostText} ref={newPostTextarea} onChange={onPostChange} className={`${s.inpText} inpText`} placeholder='your posts...' />
 				<div className={s.buttonbox}>
 					<button onClick={() => addPostHandler()} className="button">Add Post</button>
 				</div>

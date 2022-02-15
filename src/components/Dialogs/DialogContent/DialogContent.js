@@ -18,7 +18,7 @@ function DialogContent(props) {
 		<div className={s.form}>
 			<textarea ref={newMessage} className={`${s.inpText} inpText`}></textarea>
 			<div className={s.buttonBox}>
-				<button onClick={addMessage} className="inpText">Отправить</button>
+				<button onClick={addMessage} className="button">Отправить</button>
 			</div>
 		</div>
 	</>

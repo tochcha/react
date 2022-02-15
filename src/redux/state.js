@@ -92,22 +92,22 @@ let store = {
 	addPost() {
 		let newPost = {
 			id: 3,
-			message: store._state.myProfilePage.newPostText,
+			message: this._state.myProfilePage.newPostText,
 			likes: 0
 		};
-		if (store._state.myProfilePage.newPostText.length > 0) {
-			store._state.myProfilePage.dataMyPosts.push(newPost);
+		if (this._state.myProfilePage.newPostText.length > 0) {
+			this._state.myProfilePage.dataMyPosts.push(newPost);
 		}
 		this.updatePostText('');
-		store._callSubscriber(this._state);
+		this._callSubscriber(this._state);
 	},
 	updatePostText(newText) {
-		store._state.myProfilePage.newPostText = newText;
-		console.log(store._state.myProfilePage.newPostText);
-		store._callSubscriber(this._state);
+		this._state.myProfilePage.newPostText = newText;
+		// console.log(this._state.myProfilePage.newPostText);
+		this._callSubscriber(this._state);
 	},
-	subscribe(observer) {
-		store._callSubscriber = observer;
+	_subscribe(observer) {
+		this._callSubscriber = observer;
 	}
 };
 

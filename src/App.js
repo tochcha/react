@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './components/Forms/Forms.css';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
@@ -9,8 +10,8 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setting from './components/Setting/Setting';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Friends from './components/Friends/Friends';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import store from './redux/state';
 
 
@@ -26,8 +27,8 @@ function App() {
 						<div className="wrapper">
 							<div className='content__grid'>
 								<aside className='aside'>
-									<Nav menu={store._state.menu} />
-									<Friends friends={store._state.friends} />
+									<Nav menu={store.getState().menu} />
+									<Friends friends={store.getState().friends} />
 								</aside>
 								<main className='main'>
 									<Routes>
@@ -35,17 +36,17 @@ function App() {
 										<Route
 											path="/dialogs/*"
 											element={<Dialogs
-												dialogsUsers={store._state.dialogsPage.dialogsUsers}
-												messagesData={store._state.dialogsPage.messagesData}
+												dialogsUsers={store.getState().dialogsPage.dialogsUsers}
+												messagesData={store.getState().dialogsPage.messagesData}
 											/>}
 										/>
 										<Route
 											path="/profile"
 											element={<Profile
-												myProfile={store._state.myProfilePage.myProfile} dataMyPosts={store._state.myProfilePage.dataMyPosts}
-												newPostText={store._state.myProfilePage.newPostText}
-												updatePostText={store.updatePostText}
-												addPost={store.addPost}
+												myProfile={store.getState().myProfilePage.myProfile} dataMyPosts={store.getState().myProfilePage.dataMyPosts}
+												newPostText={store.getState().myProfilePage.newPostText}
+												updatePostText={store.updatePostText.bind(store)}
+												addPost={store.addPost.bind(store)}
 											/>}
 										/>
 										<Route path="/news" element={<News />} />

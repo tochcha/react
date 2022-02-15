@@ -4,9 +4,6 @@ import DialogUser from './DialogUser/DialogUser';
 import DialogContent from './DialogContent/DialogContent';
 
 
-
-
-
 function Dialogs(props) {
 	const resUsers = props.dialogsUsers.map((user, index) => {
 		return <DialogUser key={index} name={user.name} ava={user.ava} id={user.id} />
