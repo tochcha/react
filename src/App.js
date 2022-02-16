@@ -12,12 +12,12 @@ import Music from './components/Music/Music';
 import Setting from './components/Setting/Setting';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import store from './redux/state';
+// import store from './redux/state';
 
 
 
 
-function App() {
+function App({ store }) {
 	return <>
 		<BrowserRouter>
 			<div className="main_wrapper">
