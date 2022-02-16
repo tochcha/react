@@ -86,10 +86,10 @@ let store = {
 	getState() {
 		return this._state;
 	},
-	callSubscriber() {
+	_callSubscriber() {
 		console.log('State changed');
 	},
-	addPost() {
+	_addPost() {
 		let newPost = {
 			id: 3,
 			message: this._state.myProfilePage.newPostText,
@@ -98,16 +98,23 @@ let store = {
 		if (this._state.myProfilePage.newPostText.length > 0) {
 			this._state.myProfilePage.dataMyPosts.push(newPost);
 		}
-		this.updatePostText('');
-		this.callSubscriber(this._state);
+		this._updatePostText('');
+		this._callSubscriber(this._state);
 	},
-	updatePostText(newText) {
+	_updatePostText(newText) {
 		this._state.myProfilePage.newPostText = newText;
 		console.log(this._state.myProfilePage.newPostText);
-		this.callSubscriber(this._state);
+		this._callSubscriber(this._state);
 	},
 	subscribe(observer) {
-		this.callSubscriber = observer;
+		this._callSubscriber = observer;
+	},
+	dispatch(action) {
+		if (action.type === 'ADD-POST') {
+			this._addPost();
+		}  else if (action.type === 'UPDATE-POST-TEXT') {
+			this._updatePostText(action.newText);
+		}
 	}
 };
 
