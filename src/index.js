@@ -8,14 +8,14 @@ import store from './redux/state';
 export function myRender() {
 	ReactDOM.render(
 		<React.StrictMode>
-			<App />
+			<App store={store} />
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
 }
 myRender();
 
-store._subscribe(myRender);
+store.subscribe(myRender);
 
 // reportWebVitals();
 
