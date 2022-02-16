@@ -93,24 +93,45 @@ let store = {
 		this._callSubscriber = observer;
 	},
 	dispatch(action) {
-		if (action.type === 'ADD-POST') {
-			let newPost = {
-				id: 3,
-				message: this._state.myProfilePage.newPostText,
-				likes: 0
-			};
-			if (this._state.myProfilePage.newPostText.length > 0) {
-				this._state.myProfilePage.dataMyPosts.push(newPost);
-			}
-			this._state.myProfilePage.newPostText = '';
-			this._callSubscriber(this._state);
-		}  else if (action.type === 'UPDATE-POST-TEXT') {
-			this._state.myProfilePage.newPostText = action.newText;
-			console.log(this._state.myProfilePage.newPostText);
-			this._callSubscriber(this._state);
+		switch (action.type) {
+			case 'ADD-POST':
+				let newPost = {
+					id: 3,
+					message: this._state.myProfilePage.newPostText,
+					likes: 0
+				};
+				if (this._state.myProfilePage.newPostText.length > 0) {
+					this._state.myProfilePage.dataMyPosts.push(newPost);
+				}
+				this._state.myProfilePage.newPostText = '';
+				this._callSubscriber(this._state);
+				break;
+
+			case 'UPDATE-POST-TEXT':
+				this._state.myProfilePage.newPostText = action.newText;
+				console.log(this._state.myProfilePage.newPostText);
+				this._callSubscriber(this._state);
+				break;
+		
+			default:
+				break;
 		}
 	}
 };
+
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+const ADD_POST = 'ADD-POST';
+export function addPostActionCrator() {
+	return {
+		type: ADD_POST
+	}
+}
+export function onPostChangeActionCrator(text) {
+	return {
+		type: UPDATE_POST_TEXT,
+		newText: text
+	}
+}
 
 
 

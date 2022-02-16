@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
+import { addPostActionCrator, onPostChangeActionCrator } from './../../../redux/state';
 
 
 function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
@@ -10,19 +11,12 @@ function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
 	let newPostTextarea = React.createRef();
 	
 	function addPostHandler() {
-		const action = {
-			type: 'ADD-POST'
-		};
-		dispatch(action);
+		dispatch(addPostActionCrator());
 	}
 
 	function onPostChange() {
 		let text = newPostTextarea.current.value;
-		const action = {
-			type: 'UPDATE-POST-TEXT',
-			newText: text
-		};
-		dispatch(action);
+		dispatch(onPostChangeActionCrator(text));
 	}
 
 
@@ -32,7 +26,7 @@ function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
 			<div className={s.add}>
 				<textarea ref={newPostTextarea} value={newPostText} onChange={onPostChange} className={`${s.inpText} inpText`} placeholder='your posts...' />
 				<div className={s.buttonbox}>
-					<button onClick={() => addPostHandler()} className="button">Add Post</button>
+					<button onClick={addPostHandler} className="button">Add Post</button>
 				</div>
 			</div>
 			<div className="postslist">
