@@ -86,8 +86,8 @@ let store = {
 	getState() {
 		return this._state;
 	},
-	_callSubscriber() {
-		console.log('State changed');;
+	callSubscriber() {
+		console.log('State changed');
 	},
 	addPost() {
 		let newPost = {
@@ -99,17 +99,18 @@ let store = {
 			this._state.myProfilePage.dataMyPosts.push(newPost);
 		}
 		this.updatePostText('');
-		this._callSubscriber(this._state);
+		this.callSubscriber(this._state);
 	},
 	updatePostText(newText) {
 		this._state.myProfilePage.newPostText = newText;
-		// console.log(this._state.myProfilePage.newPostText);
-		this._callSubscriber(this._state);
+		console.log(this._state.myProfilePage.newPostText);
+		this.callSubscriber(this._state);
 	},
-	_subscribe(observer) {
-		this._callSubscriber = observer;
+	subscribe(observer) {
+		this.callSubscriber = observer;
 	}
 };
+
 
 
 export default store;
