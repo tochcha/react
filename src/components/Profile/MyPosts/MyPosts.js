@@ -3,8 +3,6 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 
-
-
 function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
 	const resDataMyPosts = dataMyPosts.map((myPost, index) => {
 		return <Post key={index} message={myPost.message} likes={myPost.likes} />
