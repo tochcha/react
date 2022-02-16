@@ -45,8 +45,7 @@ function App({ store }) {
 											element={<Profile
 												myProfile={store.getState().myProfilePage.myProfile} dataMyPosts={store.getState().myProfilePage.dataMyPosts}
 												newPostText={store.getState().myProfilePage.newPostText}
-												updatePostText={store.updatePostText.bind(store)}
-												addPost={store.addPost.bind(store)}
+												dispatch={store.dispatch.bind(store)}
 											/>}
 										/>
 										<Route path="/news" element={<News />} />

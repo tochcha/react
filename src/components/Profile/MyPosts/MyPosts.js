@@ -5,28 +5,34 @@ import Post from './Post/Post';
 
 
 
-function MyPosts(props) {
-	const resDataMyPosts = props.dataMyPosts.map((myPost, index) => {
+function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
+	const resDataMyPosts = dataMyPosts.map((myPost, index) => {
 		return <Post key={index} message={myPost.message} likes={myPost.likes} />
 	});
 	let newPostTextarea = React.createRef();
 	
 	function addPostHandler() {
-		let text = props.newPostText;
-		props.addPost(text);
+		const action = {
+			type: 'ADD-POST'
+		};
+		dispatch(action);
 	}
 
 	function onPostChange() {
 		let text = newPostTextarea.current.value;
-		props.updatePostText(text);
+		const action = {
+			type: 'UPDATE-POST-TEXT',
+			newText: text
+		};
+		dispatch(action);
 	}
 
 
 	return <>
 		<div className="posts">
-			<h2>{props.title}</h2>
+			<h2>{title}</h2>
 			<div className={s.add}>
-				<textarea value={props.newPostText} ref={newPostTextarea} onChange={onPostChange} className={`${s.inpText} inpText`} placeholder='your posts...' />
+				<textarea ref={newPostTextarea} value={newPostText} onChange={onPostChange} className={`${s.inpText} inpText`} placeholder='your posts...' />
 				<div className={s.buttonbox}>
 					<button onClick={() => addPostHandler()} className="button">Add Post</button>
 				</div>

@@ -3,7 +3,7 @@ import s from './Profile.module.css';
 import ProfileMain from './ProfileMain/ProfileMain';
 import MyPosts from './MyPosts/MyPosts';
 
-function Profile({ myProfile, dataMyPosts, newPostText, updatePostText, addPost }) {
+function Profile({ myProfile, dataMyPosts, newPostText, dispatch }) {
 	return <div className='profile'>
 		<div className={s.banner}>
 			<img src={myProfile.banner} alt="" />
@@ -13,9 +13,8 @@ function Profile({ myProfile, dataMyPosts, newPostText, updatePostText, addPost 
 			<MyPosts
 				title='My posts store!'
 				dataMyPosts={dataMyPosts}
-				addPost={addPost}
 				newPostText={newPostText}
-				updatePostText={updatePostText}
+				dispatch = {dispatch}
 			/>
 		</div>
 	</div>
