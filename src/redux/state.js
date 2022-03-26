@@ -22,6 +22,10 @@ let store = {
 			],
 		},
 		myProfilePage: {
+			profileMain: {
+				ava: 'https://html5css.ru/howto/img_avatar.png',
+				info: 'Этот текст выводится из state.js (попытка вывода с html-тегами)'
+			},
 			myProfile: {
 				name: 'Alex',
 				surname: 'Zatynin',
@@ -109,7 +113,6 @@ let store = {
 
 			case 'UPDATE-POST-TEXT':
 				this._state.myProfilePage.newPostText = action.newText;
-				console.log(this._state.myProfilePage.newPostText);
 				this._callSubscriber(this._state);
 				break;
 		
@@ -119,14 +122,14 @@ let store = {
 	}
 };
 
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 export function addPostActionCrator() {
 	return {
 		type: ADD_POST
 	}
 }
-export function onPostChangeActionCrator(text) {
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+export function onPostChangeActionCreator(text) {
 	return {
 		type: UPDATE_POST_TEXT,
 		newText: text

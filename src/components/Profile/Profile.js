@@ -3,13 +3,16 @@ import s from './Profile.module.css';
 import ProfileMain from './ProfileMain/ProfileMain';
 import MyPosts from './MyPosts/MyPosts';
 
-function Profile({ myProfile, dataMyPosts, newPostText, dispatch }) {
+function Profile({ profileMain, myProfile, dataMyPosts, newPostText, dispatch }) {
 	return <div className='profile'>
 		<div className={s.banner}>
 			<img src={myProfile.banner} alt="" />
 		</div>
 		<div className="main__content">
-			<ProfileMain myProfile={myProfile} />
+			<ProfileMain
+				myProfile={myProfile}
+				profileMain={profileMain}
+			/>
 			<MyPosts
 				title='My posts store!'
 				dataMyPosts={dataMyPosts}
