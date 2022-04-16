@@ -115,19 +115,16 @@ let store = {
 
 			case UPDATE_POST_TEXT:
 				this._state.myProfilePage.newPostText = action.newText;
-				console.log(this._state.myProfilePage.newPostText);
 				this._callSubscriber(this._state);
 				break;
 
 			case UPDATE_DIALOG_TEXT:
 				this._state.dialogsPage.newDialogText = action.newText;
-				console.log(this._state.dialogsPage.newDialogText);
 				this._callSubscriber(this._state);
 				break;
 
 			case SEND_MESSAGE:
 				this._state.dialogsPage.newDialogText = action.newText;
-				console.log(this._state.dialogsPage.newDialogText);
 				this._callSubscriber(this._state);
 				break;
 		
@@ -139,18 +136,18 @@ let store = {
 
 
 
-export function addPostActionCrator() {
+export function addPostActionCreator() {
 	return {
 		type: ADD_POST
 	}
 }
-export function onPostChangeActionCrator(text) {
+export function onPostChangeActionCreator(text) {
 	return {
 		type: UPDATE_POST_TEXT,
 		newText: text
 	}
 }
-export function onMessageChangeActionCrator(text) {
+export function onMessageChangeActionCreator(text) {
 	return {
 		type: UPDATE_DIALOG_TEXT,
 		newText: text

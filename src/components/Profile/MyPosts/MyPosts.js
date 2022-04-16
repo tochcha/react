@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { addPostActionCrator, onPostChangeActionCreator } from './../../../redux/state';
+import { addPostActionCreator, onPostChangeActionCreator } from './../../../redux/state';
 
 
 function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
@@ -11,7 +11,7 @@ function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
 	let newPostTextarea = React.createRef();
 	
 	function addPostHandler() {
-		dispatch(addPostActionCrator());
+		dispatch(addPostActionCreator());
 	}
 
 	function onPostChange() {

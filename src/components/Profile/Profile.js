@@ -11,7 +11,7 @@ function Profile({ profileMain, myProfile, dataMyPosts, newPostText, dispatch })
 		<div className="main__content">
 			<ProfileMain
 				myProfile={myProfile}
-				profileMain={profileMain}
+				profileMain={myProfile}
 			/>
 			<MyPosts
 				title='My posts store!'
