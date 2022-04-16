@@ -12,7 +12,6 @@ import Music from './components/Music/Music';
 import Setting from './components/Setting/Setting';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import store from './redux/state';
 
 
 

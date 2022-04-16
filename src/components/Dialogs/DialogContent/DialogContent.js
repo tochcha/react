@@ -9,7 +9,7 @@ function DialogContent(props) {
 	});
 	let newMessage = React.createRef();
 	function addMessage() {
-		let text = newMessage.current.value;
+		// let text = newMessage.current.value;
 	}
 
 	return <>

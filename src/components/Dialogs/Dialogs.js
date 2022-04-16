@@ -1,5 +1,6 @@
 import React from 'react';
 import s from "./Dialogs.module.css";
+// import { Routes, Route } from "react-router-dom";
 import DialogUser from './DialogUser/DialogUser';
 import DialogContent from './DialogContent/DialogContent';
 
@@ -24,9 +25,9 @@ function Dialogs(props) {
 								<DialogContent messagesData={props.messagesData} id='2' />
 								<DialogContent messagesData={props.messagesData} id='3' />
 								{/* <Routes>
-									<Route path="/dialogs/1" element={<DialogContent id='1' />} />
-									<Route path="/dialogs/2" element={<DialogContent id='2' />} />
-									<Route path="/dialogs/3" element={<DialogContent id='3' />} />
+									<Route path="/dialogs/1" element={<DialogContent messagesData={props.messagesData} id='1' />} />
+									<Route path="/dialogs/2" element={<DialogContent messagesData={props.messagesData} id='2' />} />
+									<Route path="/dialogs/3" element={<DialogContent messagesData={props.messagesData} id='3' />} />
 								</Routes> */}
 							</div>
 						</div>

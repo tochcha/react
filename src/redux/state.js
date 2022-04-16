@@ -1,10 +1,15 @@
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+const ADD_POST = 'ADD-POST';
+const UPDATE_DIALOG_TEXT = 'UPDATE-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+
 let store = {
 	_state: {
 		dialogsPage: {
 			dialogsUsers: [
 				{ id: 1, name: 'Teagirl', ava: 'https://author.today/content/2021/03/25/8488dde4a706465f96bf00ec457e4ec3.png' },
 				{ id: 2, name: 'Vasyl Petrenok', ava: 'https://www.meme-arsenal.com/memes/e6adac8c2b0d7958ff9fa0964cf49a6d.jpg' },
-				{ id: 3, name: 'Gennadij Abramovich', ava: 'https://cs11.pikabu.ru/post_img/big/2020/04/12/9/1586704514168132921.png' }
+				{ id: 3, name: 'Gennadij Abramovich', ava: 'https://vjoy.cc/wp-content/uploads/2020/11/avatarka-dlya-like.jpg' }
 			],
 			messagesData: [
 				{
@@ -20,6 +25,7 @@ let store = {
 					myPost: true
 				}
 			],
+			newDialogText: '',
 		},
 		myProfilePage: {
 			myProfile: {
@@ -94,7 +100,7 @@ let store = {
 	},
 	dispatch(action) {
 		switch (action.type) {
-			case 'ADD-POST':
+			case ADD_POST:
 				let newPost = {
 					id: 3,
 					message: this._state.myProfilePage.newPostText,
@@ -107,9 +113,21 @@ let store = {
 				this._callSubscriber(this._state);
 				break;
 
-			case 'UPDATE-POST-TEXT':
+			case UPDATE_POST_TEXT:
 				this._state.myProfilePage.newPostText = action.newText;
 				console.log(this._state.myProfilePage.newPostText);
+				this._callSubscriber(this._state);
+				break;
+
+			case UPDATE_DIALOG_TEXT:
+				this._state.dialogsPage.newDialogText = action.newText;
+				console.log(this._state.dialogsPage.newDialogText);
+				this._callSubscriber(this._state);
+				break;
+
+			case SEND_MESSAGE:
+				this._state.dialogsPage.newDialogText = action.newText;
+				console.log(this._state.dialogsPage.newDialogText);
 				this._callSubscriber(this._state);
 				break;
 		
@@ -119,8 +137,8 @@ let store = {
 	}
 };
 
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
-const ADD_POST = 'ADD-POST';
+
+
 export function addPostActionCrator() {
 	return {
 		type: ADD_POST
@@ -129,6 +147,12 @@ export function addPostActionCrator() {
 export function onPostChangeActionCrator(text) {
 	return {
 		type: UPDATE_POST_TEXT,
+		newText: text
+	}
+}
+export function onMessageChangeActionCrator(text) {
+	return {
+		type: UPDATE_DIALOG_TEXT,
 		newText: text
 	}
 }
