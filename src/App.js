@@ -42,7 +42,9 @@ function App({ store }) {
 										<Route
 											path="/profile"
 											element={<Profile
-												myProfile={store.getState().myProfilePage.myProfile} dataMyPosts={store.getState().myProfilePage.dataMyPosts}
+												profileMain={store.getState().myProfilePage.profileMain}
+												myProfile={store.getState().myProfilePage.myProfile}
+												dataMyPosts={store.getState().myProfilePage.dataMyPosts}
 												newPostText={store.getState().myProfilePage.newPostText}
 												dispatch={store.dispatch.bind(store)}
 											/>}

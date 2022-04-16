@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { addPostActionCrator, onPostChangeActionCrator } from './../../../redux/state';
+import { addPostActionCrator, onPostChangeActionCreator } from './../../../redux/state';
 
 
 function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
@@ -16,7 +16,7 @@ function MyPosts({ title, dataMyPosts, newPostText, dispatch }) {
 
 	function onPostChange() {
 		let text = newPostTextarea.current.value;
-		dispatch(onPostChangeActionCrator(text));
+		dispatch(onPostChangeActionCreator(text));
 	}
 
 
