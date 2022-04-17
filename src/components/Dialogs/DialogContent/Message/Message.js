@@ -8,6 +8,7 @@ function Message(props) {
 				<div className={s.ava}><img src={props.avaUrl} alt="avatar" /></div>
 				<div className={s.text}>
 					<p>{props.message}</p>
+					<p><small><strong>id: </strong><em>{props.idid}</em></small></p>
 				</div>
 			</div>
 		</div>

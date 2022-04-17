@@ -12,9 +12,6 @@ import Music from './components/Music/Music';
 import Setting from './components/Setting/Setting';
 import Friends from './components/Friends/Friends';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import store from './redux/state';
-
-
 
 
 function App({ store }) {
@@ -38,6 +35,8 @@ function App({ store }) {
 											element={<Dialogs
 												dialogsUsers={store.getState().dialogsPage.dialogsUsers}
 												messagesData={store.getState().dialogsPage.messagesData}
+												newPostText={store.getState().dialogsPage.newPostText}
+												dispatch={store.dispatch.bind(store)}
 											/>}
 										/>
 										<Route

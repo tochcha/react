@@ -20,9 +20,9 @@ function Dialogs(props) {
 						</div>
 						<div className={s.content}>
 							<div className={s.dialogsItems}>
-								<DialogContent messagesData={props.messagesData} id='1' />
-								<DialogContent messagesData={props.messagesData} id='2' />
-								<DialogContent messagesData={props.messagesData} id='3' />
+								<DialogContent messagesData={props.messagesData} newPostText={props.newPostText} dispatch={props.dispatch} id='1' />
+								{/* <DialogContent messagesData={props.messagesData} id='2' />
+								<DialogContent messagesData={props.messagesData} id='3' /> */}
 								{/* <Routes>
 									<Route path="/dialogs/1" element={<DialogContent id='1' />} />
 									<Route path="/dialogs/2" element={<DialogContent id='2' />} />

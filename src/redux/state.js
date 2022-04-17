@@ -1,10 +1,11 @@
+import { nanoid } from 'nanoid'
 let store = {
 	_state: {
 		dialogsPage: {
 			dialogsUsers: [
 				{ id: 1, name: 'Teagirl', ava: 'https://author.today/content/2021/03/25/8488dde4a706465f96bf00ec457e4ec3.png' },
 				{ id: 2, name: 'Vasyl Petrenok', ava: 'https://www.meme-arsenal.com/memes/e6adac8c2b0d7958ff9fa0964cf49a6d.jpg' },
-				{ id: 3, name: 'Gennadij Abramovich', ava: 'https://cs11.pikabu.ru/post_img/big/2020/04/12/9/1586704514168132921.png' }
+				{ id: 3, name: 'Gennadij Abramovich', ava: 'https://vjoy.cc/wp-content/uploads/2020/11/avatarka-dlya-like.jpg' }
 			],
 			messagesData: [
 				{
@@ -20,6 +21,7 @@ let store = {
 					myPost: true
 				}
 			],
+			newPostText: '',
 		},
 		myProfilePage: {
 			myProfile: {
@@ -91,7 +93,7 @@ let store = {
 	},
 	_addPost() {
 		let newPost = {
-			id: 3,
+			id: nanoid(),
 			message: this._state.myProfilePage.newPostText,
 			likes: 0
 		};
@@ -106,6 +108,24 @@ let store = {
 		console.log(this._state.myProfilePage.newPostText);
 		this._callSubscriber(this._state);
 	},
+	_addWriteFriendText() {
+		let newPost = {
+			id: nanoid(),
+			ava: 'https://html5css.ru/howto/img_avatar.png',
+			message: this._state.dialogsPage.newPostText,
+			myPost: true
+		};
+		if (this._state.dialogsPage.newPostText.length > 0) {
+			this._state.dialogsPage.messagesData.push(newPost);
+		}
+		this._updatePostText('');
+		this._callSubscriber(this._state);
+	},
+	_updateWriteFriendText(newText) {
+		this._state.dialogsPage.newPostText = newText;
+		console.log(this._state.dialogsPage.newPostText);
+		this._callSubscriber(this._state);
+	},
 	subscribe(observer) {
 		this._callSubscriber = observer;
 	},
@@ -114,6 +134,10 @@ let store = {
 			this._addPost();
 		}  else if (action.type === 'UPDATE-POST-TEXT') {
 			this._updatePostText(action.newText);
+		} else if (action.type === 'UPDATE-WRITE-FRIEND-TEXT') {
+			this._updateWriteFriendText(action.newText);
+		} else if (action.type === 'ADD-WRITE-FRIEND-TEXT') {
+			this._addWriteFriendText(action.newText);
 		}
 	}
 };

@@ -5,6 +5,7 @@ import App from './App';
 import store from './redux/state';
 
 
+
 export function myRender() {
 	ReactDOM.render(
 		<React.StrictMode>
